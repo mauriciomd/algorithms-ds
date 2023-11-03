@@ -4,9 +4,11 @@ import (
 	"fmt"
 
 	"github.com/mauriciomd/algorithms-ds/lists"
+	"github.com/mauriciomd/algorithms-ds/queue"
 )
 
-func main() {
+func testSinglyLinkedList() {
+	fmt.Println("Using Singly Linked List")
 	singlyLinkedList := lists.NewSinglyLinkedList[int]()
 
 	singlyLinkedList.Append(1)
@@ -21,7 +23,10 @@ func main() {
 
 	fmt.Println()
 	singlyLinkedList.PrintAllElements()
+}
 
+func testDoublyLinkedList() {
+	fmt.Println("Using Doubly Linked List")
 	doublyLinkedList := lists.NewDoublyLinkedList[int]()
 	doublyLinkedList.Append(1)
 	doublyLinkedList.Append(3)
@@ -36,4 +41,26 @@ func main() {
 	doublyLinkedList.PrintAllElements()
 	fmt.Println()
 	doublyLinkedList.PrintAllReversedElements()
+}
+
+func testQueue() {
+	fmt.Println("Using Queue")
+	q := queue.New[int]()
+
+	q.Enqueue(10)
+	q.Enqueue(20)
+	q.Enqueue(30)
+	q.PrintQueue()
+	fmt.Println("Dequeue", q.Dequeue())
+	fmt.Println("Dequeue", q.Dequeue())
+	fmt.Println("Dequeue", q.Dequeue())
+}
+
+func main() {
+	testSinglyLinkedList()
+	fmt.Println()
+	testDoublyLinkedList()
+	fmt.Println()
+	testQueue()
+	fmt.Println()
 }
