@@ -3,6 +3,7 @@ package main
 import (
 	"fmt"
 
+	"github.com/mauriciomd/algorithms-ds/graph"
 	"github.com/mauriciomd/algorithms-ds/lists"
 	"github.com/mauriciomd/algorithms-ds/queue"
 )
@@ -56,11 +57,29 @@ func testQueue() {
 	fmt.Println("Dequeue", q.Dequeue())
 }
 
+func testAdjacencyMatrixGraph() {
+	fmt.Println("Using Graph - Adjacency Matrix")
+
+	// Source: freecodecamp.com
+	g := graph.NewAdjacencyMatrix(6, false)
+	g.AddEdge(0, 1, 1)
+	g.AddEdge(0, 4, 1)
+	g.AddEdge(1, 2, 1)
+	g.AddEdge(1, 4, 1)
+	g.AddEdge(2, 3, 1)
+	g.AddEdge(3, 4, 1)
+	g.AddEdge(3, 5, 1)
+
+	g.Print()
+}
+
 func main() {
 	testSinglyLinkedList()
 	fmt.Println()
 	testDoublyLinkedList()
 	fmt.Println()
 	testQueue()
+	fmt.Println()
+	testAdjacencyMatrixGraph()
 	fmt.Println()
 }
