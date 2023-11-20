@@ -4,6 +4,7 @@ import (
 	"fmt"
 
 	"github.com/mauriciomd/algorithms-ds/queue"
+	"github.com/mauriciomd/algorithms-ds/stack"
 )
 
 type AdjacencyMatrix struct {
@@ -66,6 +67,33 @@ func (g *AdjacencyMatrix) BFS(from, to int) []int {
 		for i := 0; i < len(g.graph); i++ {
 			if g.graph[node][i] == 1 {
 				q.Enqueue(i)
+			}
+		}
+	}
+
+	return path
+}
+
+func (g *AdjacencyMatrix) DFS(from, to int) []int {
+	path := []int{}
+	seen := make([]bool, len(g.graph))
+	s := stack.New[int]()
+
+	s.Push(from)
+
+	for !s.IsEmpty() {
+		node := s.Pop()
+
+		if seen[node] {
+			continue
+		}
+
+		path = append(path, node)
+		seen[node] = true
+
+		for i := 0; i < len(seen); i++ {
+			if g.graph[node][i] == 1 {
+				s.Push(i)
 			}
 		}
 	}
