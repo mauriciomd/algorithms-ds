@@ -41,9 +41,9 @@ func (s *Stack[T]) Push(value T) *Stack[T] {
 
 func (s *Stack[T]) Pop() T {
 	node := s.head
-
 	s.head = s.head.next
 	node.next = nil
+	s.length -= 1
 
 	return node.value
 }
