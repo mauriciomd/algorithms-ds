@@ -5,6 +5,7 @@ import (
 
 	"github.com/mauriciomd/algorithms-ds/graph"
 	"github.com/mauriciomd/algorithms-ds/lists"
+	"github.com/mauriciomd/algorithms-ds/lru"
 	"github.com/mauriciomd/algorithms-ds/queue"
 )
 
@@ -73,6 +74,31 @@ func testAdjacencyMatrixGraph() {
 	g.Print()
 }
 
+func testLRU() {
+	fmt.Println("Using LRU")
+
+	lru := lru.NewCache(4)
+
+	lru.Set("a", 1)
+	lru.Print()
+	lru.Set("b", 2)
+	lru.Print()
+	lru.Set("c", 3)
+	lru.Print()
+	lru.Get("a")
+	lru.Print()
+	lru.Set("d", 4)
+	lru.Print()
+	lru.Set("e", 5)
+	lru.Print()
+	lru.Set("f", 6)
+	lru.Print()
+	lru.Get("e")
+	lru.Print()
+	lru.Get("e")
+	lru.Print()
+}
+
 func main() {
 	testSinglyLinkedList()
 	fmt.Println()
@@ -82,4 +108,5 @@ func main() {
 	fmt.Println()
 	testAdjacencyMatrixGraph()
 	fmt.Println()
+	testLRU()
 }
