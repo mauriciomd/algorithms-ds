@@ -34,3 +34,20 @@ func TestAdjMatrixGraph(t *testing.T) {
 		}
 	})
 }
+
+func TestDijkstra(t *testing.T) {
+	g := NewAdjacencyMatrix(5, true)
+	g.AddEdge(0, 1, 1)
+	g.AddEdge(0, 2, 5)
+	g.AddEdge(1, 2, 7)
+	g.AddEdge(1, 3, 3)
+	g.AddEdge(2, 4, 1)
+	g.AddEdge(3, 2, 2)
+
+	got := strings.Join(Map(g.Dijkstra(0, 4), strconv.Itoa), ",")
+	want := "4,2,0"
+
+	if got != want {
+		t.Errorf("got %s want %s", got, want)
+	}
+}
